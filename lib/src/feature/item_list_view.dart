@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
 import '../settings/settings_view.dart';
-import 'sample_item.dart';
-import 'sample_item_details_view.dart';
+import 'item.dart';
+import 'item_details_view.dart';
 
 /// Displays a list of SampleItems.
-class SampleItemListView extends StatelessWidget {
-  const SampleItemListView({
+class ItemListView extends StatelessWidget {
+  const ItemListView({
     super.key,
-    this.items = const [SampleItem(1), SampleItem(2), SampleItem(3)],
+    this.items = const [Item(1,'Youssef', 'Haouas'), Item(2,'Jamal','Chenaoui'), Item(3,'Rafik' , 'Boubker')],
   });
 
   static const routeName = '/';
 
-  final List<SampleItem> items;
+  final List<Item> items;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Items'),
+        title: const Text('Yclinc'),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -43,13 +43,13 @@ class SampleItemListView extends StatelessWidget {
         // Providing a restorationId allows the ListView to restore the
         // scroll position when a user leaves and returns to the app after it
         // has been killed while running in the background.
-        restorationId: 'sampleItemListView',
+        restorationId: 'ItemListView',
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
           final item = items[index];
 
           return ListTile(
-            title: Text('SampleItem ${item.id}'),
+            title: Text('Dr. ${item.id}'),
             leading: const CircleAvatar(
               // Display the Flutter Logo image asset.
               foregroundImage: AssetImage('assets/images/flutter_logo.png'),
@@ -60,7 +60,7 @@ class SampleItemListView extends StatelessWidget {
               // background, the navigation stack is restored.
               Navigator.restorablePushNamed(
                 context,
-                SampleItemDetailsView.routeName,
+                ItemDetailsView.routeName,
               );
             }
           );
